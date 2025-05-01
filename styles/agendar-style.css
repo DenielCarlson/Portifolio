@@ -1,0 +1,176 @@
+* {
+  font-size: 16px;
+  font-family: monospace;
+
+  color: white;
+
+  margin: 0;
+
+  outline: none;
+}
+
+body {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: -9;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: -10;
+}
+
+.container {
+  background-color: transparent;
+  height: 85%;
+  width: 40em;
+
+  border-radius: 10px;
+
+  border: 2px solid white;
+
+  backdrop-filter: blur(1px);
+  box-shadow: 0px 0px 200px 1px rgba(255, 255, 255, 0.027);
+
+  padding: 2em 0;
+
+  position: relative;
+}
+
+form {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 5px;
+}
+
+label {
+  font-size: 1.3em;
+  color: blueviolet;
+
+  text-shadow: 0px 0px 10px blueviolet;
+
+  margin-bottom: 2px;
+}
+
+input {
+  height: 2.4em;
+  width: 70%;
+
+  border-radius: 10px;
+
+  border: 0px solid black;
+
+  color: black;
+
+  padding: 5px;
+  color: black;
+}
+
+input:focus {
+  border: 2px solid blueviolet;
+  outline: none;
+}
+
+form > :nth-child(12) {
+  height: 5em;
+  width: 70%;
+  resize: none;
+  border-radius: 10px;
+
+  border: 0px solid black;
+  padding: 5px;
+  color: black;
+}
+
+form > :nth-child(12):focus {
+  border: 2px solid blueviolet;
+  outline: none;
+}
+
+button {
+  height: 3em;
+  width: 10em;
+
+  border-radius: 10px;
+
+  margin-top: 2em;
+
+  background-color: blueviolet;
+
+  border: 0px solid;
+}
+
+button:hover {
+  box-shadow: 0 0 50px 5px blueviolet;
+}
+
+form > div {
+  width: 70%;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+
+  flex-grow: 1;
+}
+
+.back {
+  position: absolute;
+
+  text-shadow: 0px 0px 10px white;
+
+  top: 5px;
+  left: 5px;
+}
+
+.back > a {
+  text-decoration: none;
+
+  font-size: 1.2em;
+}
+
+.back > a:hover {
+  font-size: 1.3em;
+}
+
+@media (max-width: 800px) {
+  * {
+    font-size: 14px;
+  }
+
+  .container {
+    height: 100vh;
+    width: 100%;
+
+    border-width: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .back {
+    position: static;
+  }
+
+  form {
+    height: 80%;
+    width: 100%;
+  }
+}

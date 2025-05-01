@@ -1,0 +1,40 @@
+@keyframes carrossel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2140px);
+  }
+}
+
+@keyframes effect {
+  0% {
+    background-color: white;
+    opacity: 0;
+    filter: blur(50px);
+  }
+  100% {
+    background-color: transparent;
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes grow-line {
+  
+  0%{
+      width: 0;
+  }
+
+  100%{
+      500px
+  }
+
+}
+
+@keyframes cursor-animation {
+  50%{
+    color: transparent;
+  }
+}
+

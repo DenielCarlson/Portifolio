@@ -1,0 +1,869 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+
+  overflow-x: visible;
+
+  letter-spacing: 5px;
+}
+
+canvas {
+  position: fixed;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: -100;
+}
+
+section {
+  margin-bottom: 30px;
+
+  height: 100vh;
+
+  position: relative;
+}
+
+section::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+
+  background-color: white;
+
+  right: 50%;
+
+  height: 2px;
+  width: 25%;
+
+  animation: grow-line 1s linear 0.5s normal;
+}
+
+section::before {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+
+  background-color: white;
+
+  left: 50%;
+
+  height: 2px;
+  width: 25%;
+
+  animation: grow-line 1s linear 0.5s normal;
+}
+
+.container {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+button {
+  background-color: blueviolet;
+  backdrop-filter: blur(1000px);
+
+  width: 200px;
+  height: 50px;
+
+  border: 0px solid white;
+
+  border-radius: 10px;
+
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+button:hover {
+  box-shadow: 0 0 50px 5px blueviolet;
+}
+
+/*
+  ====================
+         HEADER
+  ====================
+*/
+
+header {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+
+  background-color: rgba(0, 0, 0, 0.705);
+  backdrop-filter: blur(5px);
+
+  height: 80px;
+  width: 100%;
+
+  z-index: 10;
+}
+
+#box-home {
+  position: fixed;
+
+  top: -10px;
+
+  left: 0px;
+
+  height: 80px;
+  width: 100px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 11;
+}
+
+#box-home > a {
+  text-decoration: none;
+  font-size: 2.5em;
+  font-weight: bolder;
+}
+
+#box-home > a:hover {
+  font-size: 3em;
+  text-shadow: 0 0 50px white;
+}
+
+#menu-links {
+  display: flex;
+
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+#menu-links > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  list-style-type: none;
+
+  height: 80%;
+  width: 70%;
+
+  gap: 1px;
+}
+
+ul > li {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 1;
+}
+
+ul > li > a {
+  color: blueviolet;
+
+  text-decoration: none;
+
+  font-size: 1.2em;
+
+  letter-spacing: 2px;
+
+  transition: 0.5s;
+}
+
+#menu-links > ul > li > a:hover {
+  font-size: 1.5em;
+  text-shadow: 0 0 10px blueviolet;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column-reverse;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 1;
+}
+
+.apresentation {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.banner > .apresentation > h1 {
+  font-size: 5em;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 10px;
+
+  margin-bottom: 25px;
+}
+
+.apresentation > h2 > span {
+  color: blueviolet;
+
+  text-shadow: 0 0 10px blueviolet;
+
+  font-size: 2em;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.apresentation > a {
+  margin-top: 10em;
+}
+
+/*
+  ====================
+         ABOUT
+  ====================
+*/
+
+.container-about {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 100%;
+
+  gap: 30px;
+}
+
+#about-me {
+}
+
+.terminal {
+  background-color: #1a1a1a;
+  padding: 0em 1em;
+
+  width: 1000px;
+
+  border: 0.3em solid #333;
+  border-radius: 5px;
+  box-shadow: 50px 50px 50px 1px rgba(137, 43, 226, 0.205);
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  position: relative;
+}
+
+.terminal-header {
+  background-color: #333;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 2em;
+  padding: 0 1em;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control {
+  height: 1em;
+
+  width: 1em;
+
+  margin-left: 0.4em;
+  border-radius: 50%;
+
+  display: inline-block;
+}
+
+.control.close {
+  background-color: #e33;
+}
+
+.control.minimize {
+  background-color: #ee0;
+}
+
+.control.maximize {
+  background-color: #0b0;
+}
+
+.terminal-header > h1 {
+  font-weight: 100;
+  font-size: 1.4em;
+}
+
+.text {
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2em;
+
+  padding-top: 3em;
+
+  letter-spacing: 0.2em;
+}
+
+.text > p {
+  color: blueviolet;
+  font-size: 1.2em;
+}
+
+#cursor {
+  color: blueviolet;
+  font-size: 1.2em;
+  animation: cursor-animation 1s linear infinite;
+}
+
+#about-me p:nth-child(2) {
+  margin-bottom: 25px;
+}
+
+/*
+  ====================
+         SKILLS
+  ====================
+*/
+
+.container-skills {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+#skills-title {
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 5rem;
+}
+
+.carrossel {
+  overflow-x: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  height: 210px;
+
+  position: relative;
+
+  animation: effect 1s linear normal;
+}
+
+.carrossel-box {
+  background-color: transparent;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 10px;
+
+  position: absolute;
+
+  animation: carrossel 15s linear infinite;
+}
+
+.carrossel::before {
+  content: "";
+
+  background-color: black;
+
+  position: absolute;
+  right: 0;
+  left: 0;
+
+  width: 10px;
+  height: 100%;
+
+  box-shadow: 0px 0px 50px 150px black;
+
+  z-index: 5;
+}
+
+.carrossel::after {
+  content: "";
+
+  background-color: black;
+
+  position: absolute;
+  right: 0;
+  right: 0;
+
+  width: 10px;
+  height: 100%;
+
+  box-shadow: 0px 0px 50px 150px black;
+
+  z-index: 5;
+}
+
+.element {
+  background-color: transparent;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 200px;
+
+  border: 2px solid white;
+  border-radius: 10px;
+
+  img {
+    width: 100px;
+  }
+}
+
+#skills-title > h1 {
+  font-size: 2.3em;
+  color: blueviolet;
+}
+
+/*
+  ====================
+           XP
+  ====================
+*/
+
+.xp {
+  height: auto;
+  padding-top: 100px;
+}
+
+.container-xp {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+#xp-title > h1 {
+  font-size: 2.3em;
+  color: blueviolet;
+}
+
+.content-xp {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 80%;
+
+  gap: 50px;
+}
+
+.time-line {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: start;
+
+  gap: 10px;
+
+  height: 75%;
+
+  padding-top: 100px;
+}
+
+#line {
+  background-color: white;
+
+  height: 600px;
+  width: 3px;
+}
+
+.xp-box {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 100px;
+}
+
+.xp-box > .box {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+  align-items: start;
+
+  width: 20em;
+  height: 10em;
+
+  border: 2px solid white;
+
+  border-radius: 10px;
+
+  padding: 10px;
+
+  letter-spacing: 3px;
+}
+
+.box > h2 {
+  color: blueviolet;
+  font-size: 1.3em;
+}
+
+/*
+  ====================
+        Projects
+  ====================
+*/
+
+#projects {
+  padding-top: 50px;
+}
+
+.container-projects {
+  background-color: aqua;
+
+  display: grid;
+
+  grid-template-areas:
+    "t-one t-one t-one"
+    "c-one c-two c-three"
+    "t-two t-two t-two"
+    "c-four c-five c-six";
+
+  height: 100%;
+
+  background-color: transparent;
+
+  padding-top: 20px;
+}
+
+.title-projects {
+  font-size: 2.3em;
+
+  color: blueviolet;
+
+  align-self: center;
+  justify-self: center;
+}
+
+.project-card {
+  height: 10em;
+  width: 20vw;
+
+  perspective: 1000px;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+
+  justify-self: center;
+
+  border: 2px solid white;
+
+  border-radius: 10px;
+  position: relative;
+
+  transform-style: preserve-3d;
+  transition: transform 1.5s;
+  transition-delay: 0.2s;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+
+  position: absolute;
+
+  overflow: hidden;
+}
+
+.card-back {
+  width: 95%;
+  height: 95%;
+
+  padding: 10px;
+}
+
+.card-back {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  align-items: start;
+
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  transform: rotateY(0deg);
+}
+
+.project-card:hover {
+  .card {
+    transform: rotateY(180deg);
+  }
+}
+
+.header-card {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  align-self: center;
+
+  height: 50px;
+  width: 100%;
+}
+
+.header-card > h2 {
+  color: blueviolet;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.icons {
+  width: 70px;
+  height: 100%;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+}
+
+.github-icon {
+  background-color: white;
+
+  width: 25px;
+
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.live-demo-icon {
+  width: 30px;
+
+  border-radius: 50%;
+}
+
+.card-back > :nth-child(2) {
+  height: 70px;
+
+  font-weight: bolder;
+}
+
+.card-back > :nth-child(2) > div {
+  font-weight: 100;
+  margin-top: 10px;
+
+  letter-spacing: 2px;
+
+  font-size: 0.9em;
+}
+
+.card-front > img {
+  width: 200px;
+}
+
+.container-projects > :nth-child(1) {
+  grid-area: t-one;
+}
+
+.container-projects > :nth-child(2) {
+  justify-self: end;
+  grid-area: c-one;
+}
+
+.container-projects > :nth-child(3) {
+  justify-self: center;
+  grid-area: c-two;
+}
+
+.container-projects > :nth-child(4) {
+  justify-self: start;
+  grid-area: c-three;
+}
+
+.container-projects > :nth-child(5) {
+  grid-area: t-two;
+}
+
+.container-projects > :nth-child(6) {
+  justify-self: end;
+  grid-area: c-four;
+}
+
+.container-projects > :nth-child(7) {
+  justify-self: center;
+  grid-area: c-five;
+}
+
+#nl {
+  width: 40%;
+}
+
+#al {
+  width: 30%;
+}
+
+#sbl {
+  width: 70%;
+}
+
+#ml {
+  width: 70%;
+}
+
+#nol {
+  width: 60%;
+}
+
+/*
+  ====================
+       Contact 
+  ====================
+*/
+
+.container-contact {
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.container-contact > :nth-child(1) {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: end;
+  align-items: center;
+
+  height: 50%;
+
+  gap: 30px;
+}
+
+.container-contact > :nth-child(1) > h1 {
+  color: blueviolet;
+  font-size: 3em;
+}
+
+.container-contact > :nth-child(1) > h2 {
+  font-size: 2.3em;
+
+  font-weight: 100;
+}
+
+.container-contact > :nth-child(2) {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: center;
+
+  height: 50%;
+
+  gap: 30px;
+
+  padding-top: 100px;
+}
+
+/*
+  ====================
+       Footer 
+  ====================
+*/
+
+footer {
+  background-color: black;
+
+  font-size: 1.2em;
+
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
